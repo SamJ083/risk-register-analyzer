@@ -41,3 +41,16 @@ VALID_STATUSES = ["Open", "In Progress", "Closed", "Accepted"]
 # Statuses where treatment work is finished or deliberately not pursued,
 # so a past due date is not an overdue finding.
 CLOSED_STATUSES = ["Closed", "Accepted"]
+
+# --- Finding severity per check (our own assumptions, not framework requirements) ---
+SEVERITY = {
+    "duplicate_risk_id": "High",
+    "missing_owner": "Medium",
+    "score_out_of_range": "High",
+    "non_integer_score": "Medium",
+    "score_mismatch": "Medium",
+    "residual_exceeds_inherent": "Medium",
+    "overdue_treatment": "High",
+    "stale_review": "Medium",
+    "high_risk_accepted": "High",
+}
