@@ -16,6 +16,9 @@ SCORE_PAIRS = [
     ("residual_likelihood", "residual_impact", "residual_score"),
 ]
 
+# Lowest score that counts as High, read from the rating bands.
+HIGH_THRESHOLD = dict(config.RATING_BANDS)["High"]
+
 
 def _finding(row, check, detail):
     return {
@@ -92,6 +95,68 @@ def check_score_mismatch(df):
     return findings
 
 
+def check_residual_exceeds_inherent(df):
+    both = df[df["residual_score"].notna() & df["inherent_score"].notna()]
+    bad = both[both["residual_score"] > both["inherent_score"]]
+    return [
+        _finding(row, "residual_exceeds_inherent",
+                 f"residual_score {float(row['residual_score']):g} is higher "
+                 f"than inherent_score {float(row['inherent_score']):g}")
+        for _, row in bad.iterrows()
+    ]
+
+
+def check_overdue_treatment(df):
+    as_of = pd.Timestamp(config.AS_OF_DATE)
+    open_rows = df[~df["status"].isin(config.CLOSED_STATUSES)]
+    due = open_rows["treatment_due_date"]
+    overdue = open_rows[due.notna() & (due < as_of)]
+    findings = []
+    for _, row in overdue.iterrows():
+        days = (as_of - row["treatment_due_date"]).days
+        findings.append(_finding(
+            row, "overdue_treatment",
+            f"treatment due {row['treatment_due_date']:%Y-%m-%d} is "
+            f"{days} days before {as_of:%Y-%m-%d} and status is {row['status']}"))
+    return findings
+
+
+def check_stale_review(df):
+    as_of = pd.Timestamp(config.AS_OF_DATE)
+    reviewed = df["last_review_date"]
+    age = (as_of - reviewed).dt.days
+    stale = df[reviewed.notna() & (age > config.STALE_REVIEW_DAYS)]
+    findings = []
+    for idx, row in stale.iterrows():
+        findings.append(_finding(
+            row, "stale_review",
+            f"last review {row['last_review_date']:%Y-%m-%d} is "
+            f"{int(age[idx])} days before {as_of:%Y-%m-%d} "
+            f"(limit {config.STALE_REVIEW_DAYS})"))
+    return findings
+
+
+def _acceptance_score(row):
+    """Return (column name, score) used to judge an Accept treatment."""
+    if config.ACCEPTANCE_SCORE_BASIS == "inherent":
+        return "inherent_score", row["inherent_score"]
+    if pd.notna(row["residual_score"]):
+        return "residual_score", row["residual_score"]
+    return "inherent_score", row["inherent_score"]
+
+
+def check_high_risk_accepted(df):
+    findings = []
+    for _, row in df[df["treatment"] == "Accept"].iterrows():
+        col, score = _acceptance_score(row)
+        if pd.notna(score) and score >= HIGH_THRESHOLD:
+            findings.append(_finding(
+                row, "high_risk_accepted",
+                f"treatment is Accept but {col} {float(score):g} is "
+                f"High or above (High starts at {HIGH_THRESHOLD})"))
+    return findings
+
+
 # Add each new check function to this list.
 CHECKS = [
     check_duplicate_risk_id,
@@ -99,6 +164,10 @@ CHECKS = [
     check_score_out_of_range,
     check_non_integer_score,
     check_score_mismatch,
+    check_residual_exceeds_inherent,
+    check_overdue_treatment,
+    check_stale_review,
+    check_high_risk_accepted,
 ]
 
 FINDING_COLUMNS = ["risk_id", "check", "severity", "detail"]

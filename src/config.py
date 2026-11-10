@@ -54,3 +54,9 @@ SEVERITY = {
     "stale_review": "Medium",
     "high_risk_accepted": "High",
 }
+
+# --- Which score decides whether an Accept treatment is a finding ---
+# "residual" (default): use residual_score, falling back to inherent_score if blank.
+# "inherent": always use inherent_score.
+# Provisional assumption; to be confirmed and documented in the README.
+ACCEPTANCE_SCORE_BASIS = "residual"
