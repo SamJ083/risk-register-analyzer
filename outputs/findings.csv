@@ -1,0 +1,13 @@
+finding_id,risk_id,check,severity,detail
+F-001,RISK-005,duplicate_risk_id,High,Line 6: risk_id RISK-005 appears more than once
+F-002,RISK-005,duplicate_risk_id,High,Line 24: risk_id RISK-005 appears more than once
+F-003,RISK-004,missing_owner,Medium,Line 5: no owner assigned
+F-004,RISK-025,missing_owner,Medium,Line 26: no owner assigned
+F-005,RISK-007,score_out_of_range,High,Line 8: likelihood = 6 is outside 1-5
+F-006,RISK-009,non_integer_score,Medium,Line 10: impact = 3.5 is not a whole number
+F-007,RISK-010,score_mismatch,Medium,Line 11: inherent_score is 15 but likelihood x impact = 12
+F-008,RISK-013,residual_exceeds_inherent,Medium,Line 14: residual_score 12 is higher than inherent_score 9
+F-009,RISK-015,overdue_treatment,High,Line 16: treatment due 2026-08-15 is 87 days before 2026-11-10 and status is In Progress
+F-010,RISK-025,overdue_treatment,High,Line 26: treatment due 2026-09-30 is 41 days before 2026-11-10 and status is Open
+F-011,RISK-017,stale_review,Medium,Line 18: last review 2025-12-01 is 344 days before 2026-11-10 (limit 180)
+F-012,RISK-019,high_risk_accepted,High,Line 20: treatment is Accept but residual_score 12 is High or above (High starts at 10)
