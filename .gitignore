@@ -1,0 +1,13 @@
+# Virtual environment
+.venv/
+
+# Python cache and tooling
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editor settings
+.vscode/
+
+# Secrets (never commit these)
+.env
