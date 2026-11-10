@@ -1,0 +1,26 @@
+risk_id,title,category,owner,likelihood,impact,inherent_score,residual_likelihood,residual_impact,residual_score,treatment,status,treatment_due_date,last_review_date
+RISK-001,"Unpatched internet-facing web server",Vulnerability Management,Priya Nair,4,4,16,2,3,6,Mitigate,In Progress,2027-01-31,2026-10-15
+RISK-002,"Ransomware impact on unsegmented file servers",Business Continuity,Ravi Menon,5,5,25,3,4,12,Mitigate,Open,2027-01-31,2026-10-10
+RISK-003,"Legacy VPN concentrator end-of-life",Vulnerability Management,Daniel Okafor,3,4,12,1,2,2,Mitigate,Closed,2026-06-30,2026-09-20
+RISK-004,"Shared admin account on finance system",Access Control,,4,5,20,2,3,6,Mitigate,Open,2027-02-28,2026-10-02
+RISK-005,"Vendor lacks current SOC 2 report",Third-Party Risk,Meera Iyer,3,4,12,2,2,4,Mitigate,Open,2027-01-15,2026-09-10
+RISK-006,"Delay in badge access removal for leavers",Access Control,Tom Brennan,2,2,4,1,2,2,Accept,Accepted,2026-12-31,2026-08-05
+RISK-007,"Backup restore not tested annually",Business Continuity,Lena Fischer,6,4,24,3,4,12,Mitigate,Open,2027-03-31,2026-09-25
+RISK-008,"Unencrypted laptops in field offices",Data Protection,Carlos Mendes,3,3,9,3,3,9,Mitigate,Open,2027-01-31,2026-10-20
+RISK-009,"Phishing awareness training gaps",Data Protection,Aisha Rahman,4,3.5,14,2,3,6,Mitigate,In Progress,2026-12-15,2026-10-08
+RISK-010,"Excessive privileged access in cloud tenant",Access Control,Ravi Menon,4,3,15,2,2,4,Mitigate,Open,2027-02-15,2026-09-30
+RISK-011,"No formal incident response plan test",Business Continuity,Sofia Alvarez,3,5,15,2,3,6,Mitigate,Open,2027-04-30,2026-10-12
+RISK-012,"Third-party payroll provider data breach",Third-Party Risk,Meera Iyer,2,5,10,2,3,6,Transfer,In Progress,2027-01-10,2026-08-18
+RISK-013,"Firewall rule review process outdated",Vulnerability Management,Daniel Okafor,3,3,9,4,3,12,Mitigate,Open,2027-02-05,2026-10-22
+RISK-014,"Unsanctioned file-sharing app usage",Data Protection,Aisha Rahman,3,4,12,1,2,2,Avoid,In Progress,2027-01-20,2026-09-28
+RISK-015,"Delayed patching of database servers",Vulnerability Management,Priya Nair,4,4,16,2,3,6,Mitigate,In Progress,2026-08-15,2026-10-05
+RISK-016,"Single point of failure in DNS provider",Business Continuity,Sofia Alvarez,2,4,8,1,3,3,Mitigate,Open,2027-03-15,2026-09-14
+RISK-017,"Contractor access not reviewed quarterly",Access Control,Tom Brennan,3,3,9,2,2,4,Mitigate,Open,2027-01-31,2025-12-01
+RISK-018,"Log retention below policy requirement",Data Protection,Carlos Mendes,2,3,6,1,2,2,Mitigate,Open,2027-02-28,2026-05-14
+RISK-019,"Legacy ERP without vendor support",Vulnerability Management,Ravi Menon,4,4,16,4,3,12,Accept,Accepted,2027-06-30,2026-09-18
+RISK-020,"SaaS vendor outage affects billing",Third-Party Risk,Meera Iyer,3,3,9,2,2,4,Transfer,Open,2027-01-31,2026-10-28
+RISK-021,"Expired TLS certificate on intranet portal",Vulnerability Management,Daniel Okafor,3,3,9,1,2,2,Mitigate,Closed,2026-09-01,2026-09-05
+RISK-022,"Unclassified customer data in shared drives",Data Protection,Aisha Rahman,4,4,16,2,4,8,Mitigate,In Progress,2027-02-20,2026-10-10
+RISK-005,"Offboarded vendor accounts still active",Third-Party Risk,Meera Iyer,3,3,9,2,2,4,Mitigate,Open,2027-01-25,2026-09-22
+RISK-024,"No tabletop exercise for ransomware",Business Continuity,Sofia Alvarez,3,4,12,2,3,6,Mitigate,Open,2027-03-31,2026-10-30
+RISK-025,"Unowned legacy service accounts",Access Control,,4,4,16,3,3,9,Mitigate,Open,2026-09-30,2026-10-14
