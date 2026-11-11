@@ -7,7 +7,7 @@ All data in this repository is synthetic. The sample register contains deliberat
 ## Quick start (Windows PowerShell)
 
 ```powershell
-git clone <repository-url>
+git clone https://github.com/SamJ083/risk-register-analyzer.git
 cd risk-register-analyzer
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
